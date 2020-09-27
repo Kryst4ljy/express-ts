@@ -8,7 +8,9 @@ import { systemConfig } from "./config"; // 自定义模块
 import indexRoute from "./routes/index";
 import orderRoute from "./routes/order";
 import memberRoute from "./routes/member";
-import exceptionRoute from './routes/exception'
+import exceptionRoute from "./routes/exception";
+import compareRoute from "./routes/compare";
+import gameStatisticsRoute from "./routes/gameStatistics";
 
 const app = express();
 
@@ -35,6 +37,8 @@ app.use("/", indexRoute);
 app.use("/order", orderRoute);
 app.use("/member", memberRoute);
 app.use("/exception", exceptionRoute);
+app.use("/compare", compareRoute);
+app.use("/gameStatistics", gameStatisticsRoute);
 
 // error handler
 app.use(function (err: Error, req: Request, res: Response, next: NextFunction) {
