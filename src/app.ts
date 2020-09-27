@@ -7,6 +7,8 @@ import { systemConfig } from "./config"; // 自定义模块
 
 import indexRoute from "./routes/index";
 import orderRoute from "./routes/order";
+import memberRoute from "./routes/member";
+import exceptionRoute from './routes/exception'
 
 const app = express();
 
@@ -18,7 +20,6 @@ app.all("*", (req: Request, res: Response, next) => {
     "Content-Type, Content-Length, Authorization, Accept, X-Requested-With"
   );
   res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-  res.header("Access-Control-Allow-Credentials");
   res.header("X-Powered-By", " 3.2.1");
   next();
 });
@@ -32,6 +33,8 @@ app.use(bodyParser.json({ limit: "20mb" }));
 
 app.use("/", indexRoute);
 app.use("/order", orderRoute);
+app.use("/member", memberRoute);
+app.use("/exception", exceptionRoute);
 
 // error handler
 app.use(function (err: Error, req: Request, res: Response, next: NextFunction) {
